@@ -16,7 +16,6 @@ const get_all_pokemon = async (req, res, next) => {
       })
       .sort((a, b) => a.id - b.id);
     res.status(200).json(allPokemon);
-    // res.status(200).json(pokemonData);
   } catch (error) {
     console.log(err);
     next(error);
