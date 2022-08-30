@@ -2,10 +2,10 @@ let pokemonData = require('../pokedex.json');
 
 // Get all pokemons
 const get_all_pokemon = async (req, res, next) => {
-  console.log(res);
+  // console.log(res);
 
   try {
-    const allPokemon = pokemonData
+    const allPokemon = await pokemonData
       .map(pokemon => {
         return {
           id: pokemon.id,
@@ -16,9 +16,9 @@ const get_all_pokemon = async (req, res, next) => {
       })
       .sort((a, b) => a.id - b.id);
     res.status(200).json(allPokemon);
-  } catch (error) {
+  } catch (err) {
     console.log(err);
-    next(error);
+    next(err);
   }
 };
 
@@ -27,15 +27,15 @@ const get_pokemon_by_id = async (req, res, next) => {
   // console.log(req.params)
   try {
     const { id } = req.params;
-    const pokemon = pokemonData.find(pokemon => pokemon.id === parseInt(id));
+    const pokemon = await pokemonData.find(pokemon => pokemon.id === parseInt(id));
     if (!pokemon) {
       res.status(404).json({ message: `Pokemon with id ${id} not found` });
     } else {
       res.status(200).json(pokemon);
     }
-  } catch (error) {
+  } catch (err) {
     console.log(err);
-    next(error);
+    next(err);
   }
 };
 
@@ -44,9 +44,9 @@ const get_pokemon_by_id_info = async (req, res, next) => {
   // console.log(req.params)
   try {
     const { id, info } = req.params;
-    console.log('info', info);
-    const pokemon = pokemonData.find(pokemon => pokemon.id === parseInt(id));
-    console.log(pokemon[info]);
+    // console.log('info', info);
+    const pokemon = await pokemonData.find(pokemon => pokemon.id === parseInt(id));
+    // console.log(pokemon[info]);
 
     if (!pokemon[info]) {
       res
@@ -55,9 +55,9 @@ const get_pokemon_by_id_info = async (req, res, next) => {
     } else {
       res.status(200).json(pokemon[info]);
     }
-  } catch (error) {
+  } catch (err) {
     console.log(err);
-    next(error);
+    next(err);
   }
 };
 
