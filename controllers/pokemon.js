@@ -1,21 +1,48 @@
-let pokemonData = require('../pokedex.json');
+// let pokemonData = require('../pokedex.json');
+const DATA_ENDPOINT = process.env.DATA_ENDPOINT;
+let pokemonData = require(`.${DATA_ENDPOINT}`);
 
 // Get all pokemons
 const get_all_pokemon = async (req, res, next) => {
   // console.log(res);
+  const page = parseInt(req.query.page) || 1;
+  const limit = parseInt(req.query.limit) || 20;
+
+  const startIndex = (page - 1) * limit;
+  const endIndex = page * limit;
+  const results = {};
+  // console.log(pokemonData.length%limit);
+
+  if (startIndex > pokemonData.length) {
+    res.status(404).json({ message: 'No more pages' });
+  }
+  results.currentPage = page;
+  if (pokemonData.length%limit !== 0) {
+    results.totalPages = Math.ceil(pokemonData.length/limit);
+  } else {
+    results.totalPages = pokemonData.length/limit;
+  }
+
+  if (endIndex < pokemonData.length) {
+    results.nextPage = {
+      page: page + 1,
+      limit: limit
+    }
+  };
+
+  if(startIndex > 0) {
+  results.previousPage = {
+    page: page - 1,
+    limit: limit
+  }
+};
+
+  results.results = pokemonData.slice(startIndex, endIndex);
+  // console.log(results)
 
   try {
-    const allPokemon = await pokemonData
-      .map(pokemon => {
-        return {
-          id: pokemon.id,
-          name: pokemon.name,
-          type: pokemon.type,
-          base: pokemon.base,
-        };
-      })
-      .sort((a, b) => a.id - b.id);
-    res.status(200).json(allPokemon);
+
+    res.status(200).json(results);
   } catch (err) {
     console.log(err);
     next(err);
@@ -60,6 +87,28 @@ const get_pokemon_by_id_info = async (req, res, next) => {
     next(err);
   }
 };
+
+function paginatedResults(model) {
+  return async (req, res, next) => {
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 20;
+
+    const startIndex = (page - 1) * limit;
+    const endIndex = page * limit;
+    const results = {};
+    // console.log(pokemonData.length%limit);
+
+    if (startIndex > model.length) {
+      res.status(404).json({ message: 'No more pages' });
+    }
+    if (model.length%limit !== 0) {
+      results.totalPages = Math.ceil(model.length/limit);
+    } else {
+      results.totalPages = model.length/limit;
+    }
+}
+}
+
 
 module.exports = {
   get_all_pokemon,
