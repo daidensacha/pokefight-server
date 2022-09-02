@@ -44,7 +44,6 @@ const get_pokemon_by_id_info = async (req, res, next) => {
   // console.log(req.params)
   try {
     const { id, info } = req.params;
-    // console.log('info', info);
     const pokemon = await pokemonData.find(pokemon => pokemon.id === parseInt(id));
     // console.log(pokemon[info]);
 
