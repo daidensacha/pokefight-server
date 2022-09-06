@@ -28,14 +28,14 @@ const paginationResults = model => {
     }
     // Display next page ONLY if there is one
     if (endIndex < model.length) {
-      results.nextPage = {
+      results.next = {
         page: page + 1,
         limit: limit,
       };
     }
     // Display previous page ONLY if there is one
     if (startIndex > 0) {
-      results.previousPage = {
+      results.previous = {
         page: page - 1,
         limit: limit,
       };
