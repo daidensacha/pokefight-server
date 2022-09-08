@@ -37,7 +37,7 @@ Get Pokemon by ID
 https://oodaiden-pokemon-server.onrender.com/pokemon/62
 ```
 
-Get Pokemon by Name, Type, or Base (requires pokemon ID)
+Get Pokemon attributes by id/name, id/type, or id/base (requires pokemon ID)
 ```js
 //name
 https://oodaiden-pokemon-server.onrender.com/pokemon/62/name
@@ -50,7 +50,20 @@ https://oodaiden-pokemon-server.onrender.com/pokemon/62/base
 
 ```
 
-Example Data
+Get Pokemon by query: id, name, or type
+```js
+// id // Returns the Pokemon with the matching id
+https://oodaiden-pokemon-server.onrender.com/pokemon?id=56
+
+// name // Returns the Pokemon with matching name
+https://oodaiden-pokemon-server.onrender.com/pokemon?name=Venusaur
+
+// type // Returns array of Pokemon with the type
+https://oodaiden-pokemon-server.onrender.com/pokemon?type=Poison
+```
+
+### Example Data
+Results array contains the Pokemon objects.
 ```json
 {
   "currentPage": 2,

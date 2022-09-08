@@ -8,7 +8,7 @@
 <body>
   <!-- <img src="../images/logo-2.png" width="200px" alt="logo"> -->
   <header>
-    <h1>Express</h1>
+    <h1>Express Pokemon API</h1>
     <p>Welcome to my project for a Pokemon API server</p>
     <p>Created by Daiden Sacha</p>
   </header>
@@ -18,13 +18,16 @@
     <h3>API Endpoints</h3>
     <div class="content">
       <h4>1. List of All Pokemon</h4>
+      <p>Returns the list of all Pokemons.</p>
       <ul>
-        <li>All Pokemons: <a
+        <li><strong>All Pokemons:</strong> <a
             href="https://oodaiden-pokemon-server.onrender.com/pokemon">https://oodaiden-pokemon-server.onrender.com/pokemon</a>
         </li>
-        <p>Add Query parameters for page number, and results per page as follows.</p>
+      </ul>
+        <p>Add Pagination Query parameters for page number, and results per page as follows.</p>
+      <ul>
         <li>
-          Pagination: <a
+          <strong>Pagination:</strong> <a
             href="https://oodaiden-pokemon-server.onrender.com/pokemon?page=1&limit=20">https://oodaiden-pokemon-server.onrender.com/pokemon?page=1&limit=20</a>
             <ul>
               <li>
@@ -40,7 +43,7 @@
       <h4>2. Single Pokemon by id (where id = Pokemon id)</h4>
       <p>Append the Point 1 endpoint with the Pokemon ID, as follows.</p>
       <ul>
-      <li>Pokemon id: <a
+      <li><strong>Pokemon id:</strong> <a
           href="https://oodaiden-pokemon-server.onrender.com/pokemon/62">https://oodaiden-pokemon-server.onrender.com/pokemon/62</a>
       </li>
       </ul>
@@ -50,14 +53,33 @@
       <p>Append the point 2 endpoint with the Pokemon "info" charactartistic, as follows.</p>
       <ul>
 
-        <li>Pokemon name: <a
+        <li><strong>Pokemon name:</strong> <a
             href="https://oodaiden-pokemon-server.onrender.com/pokemon/62/name">https://oodaiden-pokemon-server.onrender.com/pokemon/62/name</a>
         </li>
-        <li>Pokemon type: <a
+        <li><strong>Pokemon type:</strong> <a
             href="https://oodaiden-pokemon-server.onrender.com/pokemon/62/type">https://oodaiden-pokemon-server.onrender.com/pokemon/62/type</a>
         </li>
-        <li>Pokemon base: <a
+        <li><strong>Pokemon base:</strong> <a
             href="https://oodaiden-pokemon-server.onrender.com/pokemon/62/base">https://oodaiden-pokemon-server.onrender.com/pokemon/62/base</a>
+        </li>
+      </ul>
+    </div>
+    <div class="content">
+      <h4>4. Query parameters returning result by id, name, type</h4>
+      <p>Append base URL endpoint in point 1 with the Pokemon "id", "name", "type", as follows.</p>
+      <ul>
+
+        <li><strong>Pokemon id:</strong> <a
+            href="https://oodaiden-pokemon-server.onrender.com/pokemon?id=262">https://oodaiden-pokemon-server.onrender.com/pokemon?id=262</a>
+            <p>Returns the Pokemon with the matching id.</p>
+        </li>
+        <li><strong>Pokemon name:</strong> <a
+            href="https://oodaiden-pokemon-server.onrender.com/pokemon?name=Mightyena">https://oodaiden-pokemon-server.onrender.com/pokemon?name=Mightyena</a>
+            <p>Returns the Pokemon with the matching name.</p>
+        </li>
+        <li><strong>Pokemon type:</strong> <a
+            href="https://oodaiden-pokemon-server.onrender.com/pokemon?type=Dark">https://oodaiden-pokemon-server.onrender.com/pokemon?type=Dark</a>
+            <p>Returns an array of all Pokemon with the matching type.</p>
         </li>
       </ul>
     </div>

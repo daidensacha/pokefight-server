@@ -20,8 +20,8 @@ pokemonRouter
   .route('/:id')
   .get(getOnlyRequests, get_pokemon_by_id);
 
-  pokemonRouter
-  .route('/:id/:info')
-  .get(getOnlyRequests, get_pokemon_by_id_info);
+pokemonRouter
+.route('/:id/:info')
+.get(getOnlyRequests, get_pokemon_by_id_info);
 
 module.exports = pokemonRouter;
