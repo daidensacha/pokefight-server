@@ -9,7 +9,7 @@
 const paginationResults = model => {
   return (req, res, next) => {
     const page = parseInt(req.query.page) || 1;
-    const limit = parseInt(req.query.limit) || 20;
+    const limit = parseInt(req.query.limit) || 18;
 
     const startIndex = (page - 1) * limit;
     const endIndex = page * limit;
